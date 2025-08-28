@@ -1,4 +1,4 @@
-# (Java-Based) Simple Text Adventure Game (STAG)
+# Simple Text Adventure Game (STAG)
 
 ## Project Overview
 This is a Java-based text adventure game engine, inspired by classic text RPGs such as Zork.  
