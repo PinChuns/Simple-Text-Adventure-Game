@@ -1,11 +1,11 @@
-# Simple Text Adventure Game (STAG) in Java
+## Simple Text Adventure Game (STAG) in Java
 
-## Project Overview
+### Project Overview
 A Java-based TCP socket server for text adventure games inspired by Zork. Multiple players can connect, explore locations, interact with entities, and perform both built-in and custom actions defined via configuration files (DOT for entities, XML for actions).
 
 ---
 
-## Features
+### Features
 - Built-in commands: `look`, `goto`, `get`, `drop`, `inventory`, `health`
 - Custom actions via XML & DOT configs
 - Flexible command parsing (case-insensitive, decorative words, word-order variation)
@@ -13,14 +13,14 @@ A Java-based TCP socket server for text adventure games inspired by Zork. Multip
 - Player health system (max 3; poison/potion effects; respawn on death)
 ---
 
-## Technical Details 
+### Technical Details 
 - Language / Build： Java 17, Maven
 - Networking： TCP Socket Server
 - Parsing： DOT (GraphViz) for entities、JAXP (DOM) for actions
 - Constraints： No Lambdas, Arrays, ArrayLists, Ternary operators, unqualified method calls, or string concatenation.
 ---
 
-## Project Structure
+### Project Structure
 ```bash
 src/
 ├── main/java/edu/uob/        # Core game server implementation
@@ -34,8 +34,8 @@ config/
 
 ---
 
-## Usage
-### 1. Start the server 
+### Usage
+#### 1. Start the server 
    ```bash
     # macOS / Linux
     ./mvnw exec:java@server
@@ -43,7 +43,7 @@ config/
     mvnw.cmd exec:java@server
 ```
     
-### 2. Start the client 
+#### 2. Start the client 
    ```bash
     # macOS / Linux
     ./mvnw exec:java@client -Dexec.args="playerName"
@@ -52,16 +52,17 @@ config/
 ```
    Player name may include letters, spaces, apostrophes, and hyphens.
 
-### 3. Run test
+#### 3. Run test
 ```bash
-    ./mvnw test
-    # Windows
-    mvnw.cmd test
+# macOS / Linux
+./mvnw test
+# Windows
+mvnw.cmd test
 ```
 
 ---
 
-## Example Commands
+### Example Commands
 - `look`— Show the details of the current location
 - `goto <location>` — Move to a location reachable by a path
 - `drop` <item>— Drop an item to the current location drop <item>
@@ -70,8 +71,7 @@ config/
 - `health`— Display current health (max 3)
 
 ---
-
-## Customize Your Game
+### Customize Your Game
 1.Edit entities (DOT): Define `locations`, `paths`, `artefacts`, `characters`, and `furniture` in `config/*.dot`.
 
 2.Edit actions (XML): `Define triggers`, `subjects`, `consumed`, `produced`, and `narration` in `config/*.xml`.
@@ -82,14 +82,14 @@ config/
 
 ---
 
-## Development Notes
+### Development Notes
 - Use `StringBuilder` or `printf` instead of string concatenation.
 - To check for “illegal constructs,” run the provided strange checker locally (depending on course configuration).
 - Always run tests with mvn test and ensure the project compiles and runs correctly in a clean environment.
 
 ---
 
-## Academic Integrity & Disclaimer
+### Academic Integrity & Disclaimer
 
 This project was developed as part of a university coursework assignment.
 It is shared publicly for learning and portfolio purposes only.
