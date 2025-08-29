@@ -63,22 +63,28 @@ mvnw.cmd test
 ---
 
 ### Example Commands
-- `look`— Show the details of the current location
-- `goto <location>` — Move to a location reachable by a path
-- `drop` <item>— Drop an item to the current location drop <item>
-- `unlock <object> with <item>`— Unlock a locked object using a key/tool unlock <object> with <item>
-- `inventory`— Show items carried by the player
-- `health`— Display current health (max 3)
+`look`— Show the details of the current location
+
+`goto <location>` — Move to a location reachable by a path
+
+`drop` <item>— Drop an item to the current location drop <item>
+
+`unlock <object> with <item>`— Unlock a locked object using a key/tool unlock <object> with <item>
+
+`inventory`— Show items carried by the player
+
+`health`— Display current health (max 3)
 
 ---
+
 ### Customize Your Game
-1.Edit entities (DOT): Define `locations`, `paths`, `artefacts`, `characters`, and `furniture` in `config/*.dot`.
+1. Edit entities (DOT): Define `locations`, `paths`, `artefacts`, `characters`, and `furniture` in `config/*.dot`.
 
-2.Edit actions (XML): `Define triggers`, `subjects`, `consumed`, `produced`, and `narration` in `config/*.xml`.
+2. Edit actions (XML): `Define triggers`, `subjects`, `consumed`, `produced`, and `narration` in `config/*.xml`.
 
-3.Start the server: The server will load the specified DOT / XML files. (If your program supports parameterized loading, document it here.)
+3. Start the server: The server will load the specified DOT / XML files. (If your program supports parameterized loading, document it here.)
 
-4.Tip: Entities without an initial location should be placed in the `storeroom`. They will appear in the game only when triggered by an action.
+4. Tip: Entities without an initial location should be placed in the `storeroom`. They will appear in the game only when triggered by an action.
 
 ---
 
@@ -94,3 +100,4 @@ mvnw.cmd test
 This project was developed as part of a university coursework assignment.
 It is shared publicly for learning and portfolio purposes only.
 Do not reuse this code for academic submissions.
+
