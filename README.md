@@ -1,61 +1,93 @@
 # Simple Text Adventure Game (STAG) in Java
 
 ## Project Overview
-This project is a Java-based socket server engine designed for running text adventure games. Inspired by classic games such as Zork, the engine allows multiple players to connect, explore locations, interact with entities, and perform actions defined in configuration files.
+A Java-based TCP socket server for text adventure games inspired by Zork. Multiple players can connect, explore locations, interact with entities, and perform both built-in and custom actions defined via configuration files (DOT for entities, XML for actions).
 
 ---
 
 ## Features
-- Built-in commands: look, goto, get, drop, inventory 
-- Custom game actions defined via XML & DOT config files
-- Flexible natural language parsing (case-insensitive, word order variation, decorative words)
-- Multiplayer support – players share the same world and can see each other
-- Player health system (poisons, potions, respawn mechanism)
+- Built-in commands: `look`, `goto`, `get`, `drop`, `inventory`, `health`
+- Custom actions via XML & DOT configs
+- Flexible command parsing (case-insensitive, decorative words, word-order variation)
+- Multiplayer support (players share the same world and can see each other)
+- Player health system (max 3; poison/potion effects; respawn on death)
 ---
 
 ## Technical Details 
-- Language / Framework: Java 17, Maven
-- Networking: TCP Socket Server
-- Parsing:
-  - DOT (GraphViz) for game entities (locations, artefacts, characters, furniture, etc.)
-  - XML (JAXP) for game actions
-- Constraints: No use of Lambdas, Arrays, ArrayLists, Ternary operators, unqualified method calls, or String concatenation.
-
+- Language / Build： Java 17, Maven
+- Networking： TCP Socket Server
+- Parsing： DOT (GraphViz) for entities、JAXP (DOM) for actions
+- Constraints： No Lambdas, Arrays, ArrayLists, Ternary operators, unqualified method calls, or string concatenation.
 ---
 
 ## Project Structure
-```
+```bash
 src/
-├── main/java/edu/uob/   # Core game server implementation
-├── test/java/edu/uob/   # Unit tests
+├── main/java/edu/uob/        # Core game server implementation
+├── test/java/edu/uob/        # Unit tests
 config/
-├── basic-entities.dot   # Basic game entities
+├── basic-entities.dot        # Basic game entities
 ├── extended-entities.dot
-├── basic-actions.xml    # Basic game actions
+├── basic-actions.xml         # Basic game actions
 └── extended-actions.xml
 ```
 
 ---
 
 ## Usage
-1. Start the server 
+### 1. Start the server 
    ```bash
-   mvnw exec:java@server
-
-2. Start the client 
+    # macOS / Linux
+    ./mvnw exec:java@server
+    # Windows
+    mvnw.cmd exec:java@server
+```
+    
+### 2. Start the client 
    ```bash
-   mvnw exec:java@client -Dexec.args="playername"
+    # macOS / Linux
+    ./mvnw exec:java@client -Dexec.args="playerName"
+    # Windows
+    mvnw.cmd exec:java@client -Dexec.args="playerName"
+```
+   Player name may include letters, spaces, apostrophes, and hyphens.
 
-3. Run test
-    ```bash
-   mvnw test
+### 3. Run test
+```bash
+    ./mvnw test
+    # Windows
+    mvnw.cmd test
+```
 
 ---
 
 ## Example Commands
-- look: Show the details of the current location
-- goto <location>: Move to another place 
-- get <item>: Drop an item
-- unlock <object> with <item>: Unlock a locked object using a key or tool
-- inventory: Show item carried by the player
-- health: Display health status (max 3)
+- `look`— Show the details of the current location
+- `goto <location>` — Move to a location reachable by a path
+- `drop` <item>— Drop an item to the current location drop <item>
+- `unlock <object> with <item>`— Unlock a locked object using a key/tool unlock <object> with <item>
+- `inventory`— Show items carried by the player
+- `health`— Display current health (max 3)
+
+---
+## Customize Your Game
+1.Edit entities (DOT): Define `locations`, `paths`, `artefacts`, `characters`, and `furniture` in `config/*.dot`.
+
+2.Edit actions (XML): `Define triggers`, `subjects`, `consumed`, `produced`, and `narration` in `config/*.xml`.
+
+3.Start the server: The server will load the specified DOT / XML files. (If your program supports parameterized loading, document it here.)
+
+4.Tip: Entities without an initial location should be placed in the `storeroom`. They will appear in the game only when triggered by an action.
+
+---
+## Development Notes
+- Use `StringBuilder` or `printf` instead of string concatenation.
+- To check for “illegal constructs,” run the provided strange checker locally (depending on course configuration).
+- Always run tests with mvn test and ensure the project compiles and runs correctly in a clean environment.
+
+---
+## Academic Integrity & Disclaimer
+
+This project was developed as part of a university coursework assignment.
+It is shared publicly for learning and portfolio purposes only.
+Do not reuse this code for academic submissions.
