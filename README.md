@@ -98,6 +98,8 @@ mvnw.cmd test
 ### Academic Integrity & Disclaimer
 
 This project was developed as part of a university coursework assignment.
+
 It is shared publicly for learning and portfolio purposes only.
+
 Do not reuse this code for academic submissions.
 
