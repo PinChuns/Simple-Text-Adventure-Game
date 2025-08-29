@@ -70,6 +70,7 @@ config/
 - `health`— Display current health (max 3)
 
 ---
+
 ## Customize Your Game
 1.Edit entities (DOT): Define `locations`, `paths`, `artefacts`, `characters`, and `furniture` in `config/*.dot`.
 
@@ -80,12 +81,14 @@ config/
 4.Tip: Entities without an initial location should be placed in the `storeroom`. They will appear in the game only when triggered by an action.
 
 ---
+
 ## Development Notes
 - Use `StringBuilder` or `printf` instead of string concatenation.
 - To check for “illegal constructs,” run the provided strange checker locally (depending on course configuration).
 - Always run tests with mvn test and ensure the project compiles and runs correctly in a clean environment.
 
 ---
+
 ## Academic Integrity & Disclaimer
 
 This project was developed as part of a university coursework assignment.
